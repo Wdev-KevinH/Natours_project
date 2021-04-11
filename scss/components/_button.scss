@@ -1,0 +1,108 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+        /* link pseudoclass (best preactice for a link button) */
+        /* visited pseudoclass (same style when you clicked the button) */
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        /* use this if you want to use padding, height, etc.. (it will ocupy the space as intended) */
+        display: inline-block;
+        /* This is used on the link pseudoclass (transition will animate al the properties thast you specified under the btn classes) */
+        transition: all 0.2s;
+        position: relative;
+        font-size: 1.4rem;
+
+        // Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        &::after {
+            transform: scalex(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        /* Active pseudoclass (when the button is clicked) */
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
+    &--moveInBottom {
+        animation: moveInBottom 0.5s ease-out 0.75s;
+        /* This will apply the styles of the 0% of the animation (In this case opacity 0!) */
+        animation-fill-mode: backwards;
+    }
+
+    &::after {
+        /* for a after element to appear on the page it is always nessecary to put the content and display property */
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* positioning the new "after button" behind the actual button */
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* z-index describes the position of the new button (In this case the -1 is to position it behind the actual button) */
+        z-index: -1;
+        transition: all 0.4s;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        font-size: $default-font-size;
+        transition: all 0.2s;
+        padding: 3px 15px;
+        margin-left: 15px;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        transform: translateY(-2px);
+        border-radius: 5px;
+    }
+
+    &:active {
+        box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
+        transform: translateY(0);
+    }
+}
